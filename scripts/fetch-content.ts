@@ -1,3 +1,4 @@
+import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 import * as tar from "tar";
@@ -45,7 +46,7 @@ async function main() {
 
   if (!OWNER || !REPO) throw new Error("Missing WORKLOG_CONTENT_OWNER or WORKLOG_CONTENT_REPO");
 
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/tarball/${REF}`;
+  const url = `https://api.github.com/repos/${OWNER}/${REPO}/tarball`;
   console.log(`Fetching content: ${OWNER}/${REPO}@${REF}`);
 
   const res = await fetch(url, {
